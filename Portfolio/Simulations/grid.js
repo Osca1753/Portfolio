@@ -6,20 +6,20 @@ function preload() {
 function setup() {
   //canvas
   canvasX = windowWidth;
-  canvasY = windowHeight-175;
+  canvasY = windowHeight-95;
   createCanvas(canvasX, canvasY);
   
   //sliders
-  slider_lambda = createSlider (164,760,380);
+  slider_lambda = createSlider (164,760,440);
   slider_lambda.size(canvasX);
   
-  slider_p = createSlider(170,670,170);
+  slider_p = createSlider(170,670,430);
   slider_p.size(canvasX);
   
-  slider_d = createSlider (380,10000,5000);
+  slider_d = createSlider (380,10000,4400);
   slider_d.size(canvasX);  
   
-  slider_n = createSlider (1,30,1);
+  slider_n = createSlider (1,30,3);
   slider_n.size(canvasX);
 }
 

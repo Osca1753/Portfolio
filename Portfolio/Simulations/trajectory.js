@@ -1,23 +1,23 @@
 function setup() {
   //canvas
   canvasX = windowWidth
-  canvasY = windowHeight-130
+  canvasY = windowHeight-115
   createCanvas(canvasX, canvasY)
   
   //sliders
-  slider_a = createSlider(0,90000,0)
+  slider_a = createSlider(0,90000,45000)
   slider_a.size(canvasX)
   
-  slider_v_0 = createSlider (0,100000000000,22316323460)
+  slider_v_0 = createSlider (0,100000000000,10000000000)
   slider_v_0.size(canvasX)
   
-  slider_y_0 = createSlider (0,50000,1580)
+  slider_y_0 = createSlider (0,50000,0)
   slider_y_0.size(canvasX)
   
   slider_t = createSlider (0,50000,0)
   slider_t.size(canvasX)
   
-  slider_c = createSlider (500,10000000,500000)
+  slider_c = createSlider (500,1000000000,1245000)
   slider_c.size(canvasX)
 }
 
@@ -25,11 +25,11 @@ function draw() {
   //independant variables
   var a = slider_a.value()/1000
   var v_0 = slider_v_0.value()/1000000000
-  var y_0 = slider_y_0.value()/1000
+  var y_0 = slider_y_0.value()/10000
   var t = slider_t.value()/1000
   var c = slider_c.value()/10000
   var x_0 = 50
-  var g = 9.8
+  var g = 9.82
   
   //dependant variables
   var a_r = a*PI/180
@@ -41,7 +41,7 @@ function draw() {
   var a_t = acos(v_x/v)
   var x_t = v_0x*t
   var y_t = 0.5*-g*t**2+v_0y*t+y_0
-  var x_max = (tan(a_r)*v_0x**2+(sqrt((tan(a_r))**2+2*g*y_0/v_0x**2))*v_0x**2)/g
+  var x_max = (sin(a_r)*cos(a_r)*v_0**2+(sqrt((tan(a_r))**2+2*g*y_0/(v_0*cos(a_r))**2))*(v_0*cos(a_r))**2)/g
   var y_max = tan(a_r)**2*v_0x**2/(2*g)+y_0
   var t_top = v_0y/g
   var x_top = v_0x*t_top
@@ -234,7 +234,7 @@ function draw() {
   fill(0,0,0) 
   textSize(12) 
   text("Vinkel (α): " + a + "˚",100, 35)
-  text("Kastelængde (x_max): " + round(x_max,3) + "m",100,55)
+  text("Kastelængde (x_max): " + round(x_max,5) + "m",100,55)
   text("Maks højde (y_max): " + round(y_max,3) + "m",100,75)
   text("Højde (y_0): " + y_0 + "m",500,35)
   text("Stighøjde (y_max-y_0): " + round(y_max-y_0,3) + "m",500,55)
